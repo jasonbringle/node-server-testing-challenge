@@ -12,12 +12,19 @@ router.get('/', (req,res)=>{
             res.status(500).json({ errormessage: 'Could not get all the members'}))
 })
 
+router.get('/:id', (req,res)=>{
+    MemsDB.getById()
+        .then(mems =>
+            res.status(201).json(mems))
+        .catch(err =>
+            res.status(500).json({ errormessage: 'Could not the member'}))
+})
+
 router.post('/', (req, res) => {
     const body = req.body
     MemsDB.insert(body)
       .then(mem =>{
-        console.log(mem)
-          res.status(200).json(mem)})
+          res.status(200).json(mem[0])})
       .catch(err =>
         res.status(500).json({errormessage: 'Could not create the member.'}))
 });

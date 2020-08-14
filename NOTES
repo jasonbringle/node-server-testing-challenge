@@ -1,3 +1,7 @@
 Set up API
 Install dependencies needed---make sure DevDependencies go in proper place in package.json
 Watch Video and UNDERSTAND IT!
+
+
+
+knex --env=testing migrate:latest
